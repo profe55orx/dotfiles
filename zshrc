@@ -219,3 +219,10 @@ eval "$(jump shell)"
 # brew install direnv
 # https://github.com/direnv/direnv
 eval "$(direnv hook zsh)"
+
+# Yubikey integration
+# https://github.com/drduh/YubiKey-Guide
+export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye
+unset SSH_AGENT_PID
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
