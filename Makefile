@@ -29,6 +29,7 @@ build:
 
 install:
 	[ -d /Applications/Alacritty.app ] || cp -r ~/.packages/alacritty/target/release/osx/Alacritty.app /Applications/
+	pip install neovim
 
 clean:
 	rm -f ~/.vimrc 
