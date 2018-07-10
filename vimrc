@@ -28,6 +28,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-scriptease'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -564,41 +565,41 @@ augroup END
 let g:vim_json_syntax_conceal = 0
 
 " ==================== UltiSnips ====================
-" function! g:UltiSnips_Complete()
-"   call UltiSnips#ExpandSnippet()
-"   if g:ulti_expand_res == 0
-"     if pumvisible()
-"       return "\<C-n>"
-"     else
-"       call UltiSnips#JumpForwards()
-"       if g:ulti_jump_forwards_res == 0
-"         return "\<TAB>"
-"       endif
-"     endif
-"   endif
-"   return ""
-" endfunction
-"
-" function! g:UltiSnips_Reverse()
-"   call UltiSnips#JumpBackwards()
-"   if g:ulti_jump_backwards_res == 0
-"     return "\<C-P>"
-"   endif
-"
-"   return ""
-" endfunction
-"
-"
-" if !exists("g:UltiSnipsJumpForwardTrigger")
-"   let g:UltiSnipsJumpForwardTrigger = "<tab>"
-" endif
-"
-" if !exists("g:UltiSnipsJumpBackwardTrigger")
-"   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-" endif
-"
-" au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-" au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
+ function! g:UltiSnips_Complete()
+   call UltiSnips#ExpandSnippet()
+   if g:ulti_expand_res == 0
+     if pumvisible()
+       return "\<C-n>"
+     else
+       call UltiSnips#JumpForwards()
+       if g:ulti_jump_forwards_res == 0
+         return "\<TAB>"
+       endif
+     endif
+   endif
+   return ""
+ endfunction
+
+ function! g:UltiSnips_Reverse()
+   call UltiSnips#JumpBackwards()
+   if g:ulti_jump_backwards_res == 0
+     return "\<C-P>"
+   endif
+
+   return ""
+ endfunction
+
+
+ if !exists("g:UltiSnipsJumpForwardTrigger")
+   let g:UltiSnipsJumpForwardTrigger = "<tab>"
+ endif
+
+ if !exists("g:UltiSnipsJumpBackwardTrigger")
+   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+ endif
+
+ au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+ au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
 
 " ==================== Various other plugin settings ====================
 nmap  -  <Plug>(choosewin)
