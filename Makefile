@@ -30,6 +30,13 @@ build:
 install:
 	[ -d /Applications/Alacritty.app ] || cp -r ~/.packages/alacritty/target/release/osx/Alacritty.app /Applications/
 	pip install neovim
+	vim +'PlugInstall --sync' +qa
+	vim +'PlugUpdate --sync' +qa
+	vim +'PlugUpgrade --sync' +qa
+	nvim +'PlugInstall --sync' +qa
+	nvim +'PlugUpdate --sync' +qa
+	nvim +'PlugUpgrade --sync' +qa
+	nvim +'GoInstallBinaries --sync' +qa
 
 clean:
 	rm -f ~/.vimrc 
