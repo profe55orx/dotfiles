@@ -56,7 +56,8 @@ set hlsearch                    " Highlight found searches
 set mouse=a                     "Enable mouse mode
 
 set noerrorbells             " No beeps
-set number                   " Show line numbers
+"set number                   " Show line numbers
+set relativenumber           " Show relative numbers
 set showcmd                  " Show me what I'm typing
 set noswapfile               " Don't use swapfile
 set nobackup                 " Don't create annoying backup files
