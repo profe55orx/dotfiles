@@ -1,7 +1,6 @@
 prepare:
 	[ -d /Library/Caches/Homebrew ] || /usr/bin/ruby -e '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)'
 	brew bundle
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	
 link:
@@ -12,13 +11,13 @@ link:
 
 	[ -f ~/.config/nvim/init.vim ] || ln -s $(PWD)/vimrc ~/.config/nvim/init.vim
 	[ -f ~/.config/alacritty/alacritty.yml ] || ln -s $(PWD)/alacritty.yml ~/.config/alacritty/alacritty.yml
-	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc
 	[ -f ~/.bashrc ] || ln -s $(PWD)/bashrc ~/.bashrc
 	[ -f ~/.zshrc ] || ln -s $(PWD)/zshrc ~/.zshrc
 	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmuxconf ~/.tmux.conf
 	[ -f ~/.tigrc ] || ln -s $(PWD)/tigrc ~/.tigrc
 	[ -f ~/.git-prompt.sh ] || ln -s $(PWD)/git-prompt.sh ~/.git-prompt.sh
 	[ -f ~/.agignore ] || ln -s $(PWD)/agignore ~/.agignore
+	[ -f ~/.gnupg/gpg-agent.conf ] || ln -s $(PWD)/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 	[ -d ~/.packages/alacritty ] || git clone https://github.com/jwilm/alacritty.git ~/.packages/alacritty
 
 	# don't show last login message
@@ -30,16 +29,13 @@ build:
 install:
 	[ -d /Applications/Alacritty.app ] || cp -r ~/.packages/alacritty/target/release/osx/Alacritty.app /Applications/
 	pip install neovim
-	vim +'PlugInstall --sync' +qa
-	vim +'PlugUpdate --sync' +qa
-	vim +'PlugUpgrade --sync' +qa
 	nvim +'PlugInstall --sync' +qa
 	nvim +'PlugUpdate --sync' +qa
 	nvim +'PlugUpgrade --sync' +qa
 	nvim +'GoInstallBinaries --sync' +qa
+	pod setup
 
 clean:
-	rm -f ~/.vimrc 
 	rm -f ~/.config/nvim/init.vim
 	rm -f ~/.config/alacritty/alacritty.yml
 	rm -f ~/.bashrc
