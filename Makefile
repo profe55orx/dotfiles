@@ -39,8 +39,8 @@ clean:
 	rm -f ~/.tmux.conf
 	rm -f ~/.tigrc
 	rm -f ~/.git-prompt.sh
-	rm -f ~/.agiginore
-	rm -f ~/.packages/alacritty
+	rm -f ~/.agignore
+	rm -rf ~/.packages/alacritty
 
 all:	prepare link build install
 
