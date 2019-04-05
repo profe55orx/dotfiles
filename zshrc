@@ -219,6 +219,10 @@ eval "$(jump shell)"
 # brew install direnv
 # https://github.com/direnv/direnv
 eval "$(direnv hook zsh)"
+# brew install nodenv
+eval "$(nodenv init -)"
+# brew install rbenv
+eval "$(rbenv init -)"
 
 # Yubikey integration
 # https://github.com/drduh/YubiKey-Guide
