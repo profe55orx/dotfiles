@@ -232,3 +232,25 @@ unset SSH_AGENT_PID
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 autoload -U +X bashcompinit && bashcompinit
+
+
+if [ $commands[kubectl] ]; then 
+  source <(kubectl completion zsh)
+  alias k=kubectl
+  complete -F __start_kubectl k
+fi
+
+# Helm autocomplete - sed is required because of helm/zsh stupidity
+source <(helm completion zsh | sed -E 's/\["(.+)"\]/\[\1\]/g')
+source <(minikube completion zsh)
+
+minikube status >/dev/null
+if [ $? -eq 0 ]; then
+  eval $(minikube docker-env)
+fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/panos/.sdkman"
+[[ -s "/Users/panos/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/panos/.sdkman/bin/sdkman-init.sh"
+
+complete -o nospace -C /usr/local/bin/vault vault
