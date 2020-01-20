@@ -249,8 +249,9 @@ if [ $? -eq 0 ]; then
   eval $(minikube docker-env)
 fi
 
+complete -o nospace -C /usr/local/bin/vault vault
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/panos/.sdkman"
 [[ -s "/Users/panos/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/panos/.sdkman/bin/sdkman-init.sh"
 
-complete -o nospace -C /usr/local/bin/vault vault
