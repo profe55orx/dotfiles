@@ -1,3 +1,4 @@
 export GOPATH=$HOME/go
 export LOCALBIN=$HOME/bin
-export PATH=$GOPATH/bin:$LOCALBIN:$PATH
+export CARGOPATH="$HOME/.cargo"
+export PATH=$GOPATH/bin:$CARGOPATH/bin:$LOCALBIN:$PATH
