@@ -17,6 +17,7 @@ alias tigs="tig status" #old habits don't die
 alias d='git diff' 
 
 alias vi='vim'
+alias vim='nvim'
 
 alias sq='git rebase -i $(git merge-base $(git rev-parse --abbrev-ref HEAD) master)'
 alias co='git checkout master'
@@ -27,6 +28,8 @@ alias hb='hub browse'
 
 alias -s go='go run'
 alias hs='hugo server'
+
+alias enw='emacs -nw'
 
 # =============
 #    EXPORT
