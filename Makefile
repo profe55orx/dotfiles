@@ -13,7 +13,7 @@ link:
 	[ -f ~/.git-prompt.sh ] || ln -s $(PWD)/git-prompt.sh ~/.git-prompt.sh
 	[ -f ~/.agignore ] || ln -s $(PWD)/agignore ~/.agignore
 	[ -f ~/.gnupg/gpg-agent.conf ] || ln -s $(PWD)/gpg-agent.conf ~/.gnupg/gpg-agent.conf
-	[ -f ~/.zsh_private ] || cp $(PWD)/zsh_private ~/.zsh_private
+	[ -f ~/.zsh_private ] || ln -s $(PWD)/zsh_private ~/.zsh_private
 
 	# don't show last login message
 	touch ~/.hushlogin
