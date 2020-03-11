@@ -35,13 +35,7 @@ install:
 	nvim +'PlugUpdate --sync' +qa
 	nvim +'PlugUpgrade --sync' +qa
 	nvim +'GoInstallBinaries --sync' +qa
-	pod setup
-	source $(HOME)/.zshrc
-	sdk i java 8.0.242.hs-adpt
-	sdk i java 11.0.6.hs-adpt
-	sdk i maven
-	sdk i gradle
-	sdk i springboot
+	$(PWD)/install_sdkman.sh
 
 gpg:
 	[ -f $(GNUPG_HOME)/gpg-agent.conf ] || ln -s $(PWD)/gpg-agent.conf $(GNUPG_HOME)/gpg-agent.conf
