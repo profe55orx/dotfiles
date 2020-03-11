@@ -97,6 +97,6 @@ cask "skype"
 cask "slack"
 cask "spectacle"
 cask "virtualbox-extension-pack"
-cask "virtualbox
+cask "virtualbox"
 cask "visual-studio-code"
 cask "zoomus"
