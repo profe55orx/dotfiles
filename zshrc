@@ -288,9 +288,8 @@ fi
 
 complete -o nospace -C /usr/local/bin/vault vault
 
+export PATH=$HOME/.local/bin:$PATH
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/panos/.sdkman"
-[[ -s "/Users/panos/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/panos/.sdkman/bin/sdkman-init.sh"
-
-
-export PATH=/Users/panos/.local/bin:$PATH
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

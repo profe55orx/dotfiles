@@ -1,5 +1,14 @@
+GNUPG_HOME = $(HOME)/.gnupg
+LOCAL_BIN_HOME = $(HOME)/.local/bin
+
 prepare:
+	mkdir -p $(GNUPG_HOME)
+	mkdir -p $(LOCAL_BIN_HOME)
+
+	chmod 700 $(GNUPG_HOME)
+
 	brew bundle
+	curl -s "https://get.sdkman.io" | zsh
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	
 link:
@@ -28,6 +37,11 @@ install:
 	nvim +'GoInstallBinaries --sync' +qa
 	pod setup
 
+gpg:
+	[ -f $(GNUPG_HOME)/gpg-agent.conf ] || ln -s $(PWD)/gpg-agent.conf $(GNUPG_HOME)/gpg-agent.conf
+	[ -f $(GNUPG_HOME)/gpg.conf ] || ln -s $(PWD)/gpg.conf $(GNUPG_HOME)/gpg.conf
+	chmod 600 $(GNUPG_HOME)/gpg-agent.conf $(GNUPG_HOME)/gpg.conf
+
 clean:
 	rm -f ~/.config/nvim/init.vim
 	rm -f ~/.zshrc
@@ -35,7 +49,9 @@ clean:
 	rm -f ~/.tigrc
 	rm -f ~/.git-prompt.sh
 	rm -f ~/.agignore
+	rm -f  $(GNUPG_HOME)/gpg-agent.conf
+	rm -f  $(GNUPG_HOME)/gpg.conf
 
-all:	prepare link build install
+all:	prepare link build install gpg
 
 .PHONY: all
