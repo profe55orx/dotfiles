@@ -1,6 +1,6 @@
 GNUPG_HOME = $(HOME)/.gnupg
 LOCAL_BIN_HOME = $(HOME)/.local/bin
-USER_SHELL = dscl . -read ~/ UserShell | sed 's/UserShell: //g'
+USER_SHELL := $(shell dscl . -read ~/ UserShell | sed 's/UserShell: //g')
 
 prepare:
 	mkdir -p $(GNUPG_HOME)
