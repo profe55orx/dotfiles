@@ -6,7 +6,7 @@ prepare:
 	mkdir -p $(LOCAL_BIN_HOME)
 
 	chmod 700 $(GNUPG_HOME)
-	chsh -s /bin/zsh
+	[[ "$(SHELL)" != "/bin/zsh" ]] && chsh -s /bin/zsh || true
 
 	sudo rm -rf /Applications/Firefox.app /Applications/Google\ Chrome.app
 
