@@ -32,8 +32,8 @@ install:
 	$(PWD)/install_sdkman.sh
 
 gpg:
-	[ -f $(GNUPG_HOME)/gpg-agent.conf ] || ln -s $(PWD)/gpg-agent.conf $(GNUPG_HOME)/gpg-agent.conf
-	[ -f $(GNUPG_HOME)/gpg.conf ] || ln -s $(PWD)/gpg.conf $(GNUPG_HOME)/gpg.conf
+	ln -fs $(PWD)/gpg-agent.conf $(GNUPG_HOME)/gpg-agent.conf
+	ln -fs $(PWD)/gpg.conf $(GNUPG_HOME)/gpg.conf
 	chmod 600 $(GNUPG_HOME)/gpg-agent.conf $(GNUPG_HOME)/gpg.conf
 
 clean:
