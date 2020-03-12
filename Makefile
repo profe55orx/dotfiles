@@ -1,12 +1,14 @@
 GNUPG_HOME = $(HOME)/.gnupg
 LOCAL_BIN_HOME = $(HOME)/.local/bin
+USER_SHELL = dscl . -read ~/ UserShell | sed 's/UserShell: //g'
 
 prepare:
 	mkdir -p $(GNUPG_HOME)
 	mkdir -p $(LOCAL_BIN_HOME)
 
 	chmod 700 $(GNUPG_HOME)
-	[[ "$(SHELL)" != "/bin/zsh" ]] && chsh -s /bin/zsh || true
+
+	[[ "$(USER_SHELL)" != "/bin/zsh" ]] && chsh -s /bin/zsh || true
 
 	sudo rm -rf /Applications/Firefox.app /Applications/Google\ Chrome.app
 
