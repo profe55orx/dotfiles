@@ -6,11 +6,10 @@ prepare:
 	mkdir -p $(LOCAL_BIN_HOME)
 
 	chmod 700 $(GNUPG_HOME)
+	chsh -s /bin/zsh
 
-	brew bundle
-	curl -s "https://get.sdkman.io" | zsh
-	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	
+	sudo rm -rf /Applications/Firefox.app /Applications/Google\ Chrome.app
+
 link:
 	mkdir -p ~/.config/nvim
 	mkdir -p ~/.gnupg
@@ -27,14 +26,9 @@ link:
 	# don't show last login message
 	touch ~/.hushlogin
 
-build:
-
 install:
-	pip3 install neovim
-	nvim +'PlugInstall --sync' +qa
-	nvim +'PlugUpdate --sync' +qa
-	nvim +'PlugUpgrade --sync' +qa
-	nvim +'GoInstallBinaries --sync' +qa
+	$(PWD)/install_brew.sh
+	$(PWD)/install_nvim.sh
 	$(PWD)/install_sdkman.sh
 
 gpg:
@@ -49,9 +43,10 @@ clean:
 	rm -f ~/.tigrc
 	rm -f ~/.git-prompt.sh
 	rm -f ~/.agignore
+	rm -f ~/.zsh_private
 	rm -f  $(GNUPG_HOME)/gpg-agent.conf
 	rm -f  $(GNUPG_HOME)/gpg.conf
 
-all:	prepare link build install gpg
+all:	prepare link install gpg
 
 .PHONY: all
