@@ -6,4 +6,5 @@ else
   printf "Homebrew directory found!\n"
 fi
 
-brew bundle 
+brew bundle
+brew cask reinstall firefox google-chrome
