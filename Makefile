@@ -32,6 +32,7 @@ install:
 	$(PWD)/install_brew.sh
 	$(PWD)/install_nvim.sh
 	$(PWD)/install_sdkman.sh
+	compaudit | xargs chmod g-w
 
 gpg:
 	ln -fs $(PWD)/gpg-agent.conf $(GNUPG_HOME)/gpg-agent.conf
