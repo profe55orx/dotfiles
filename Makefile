@@ -32,6 +32,7 @@ install:
 	$(PWD)/install_brew.sh
 	$(PWD)/install_nvim.sh
 	$(PWD)/install_sdkman.sh
+	$(PWD)/install_additional_tools.sh
 	compaudit | xargs chmod g-w
 
 gpg:
